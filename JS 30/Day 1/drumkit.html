@@ -10,7 +10,11 @@
  
     </div>
 
-    <audio data-key="65" src="sounds/kick.wav"></audio>
+    <audio data-key="65" src="sounds/kick.wav"></audio> <!-- a -->
+    <audio data-key="83" src="sounds/boom.wav"></audio> <!-- s -->
+    <audio data-key="68" src="sounds/clap.wav"></audio> <!-- d -->
+    <audio data-key="70" src="sounds/openhat.wav"></audio> <!-- f -->
+    <audio data-key=""
 
   </body>
 
@@ -18,8 +22,9 @@
     window.addEventListener('keydown', function(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
       if(!audio) {
-        return
+        return // stop the function from running
       }
+     audio.currentTime = 0; //Rewind to the start
      audio.play();
     })
 
