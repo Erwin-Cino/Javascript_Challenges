@@ -10,16 +10,20 @@
  
     </div>
 
-    <audio data-key="65"></audio>
+    <audio data-key="65" src="sounds/kick.wav"></audio>
 
   </body>
 
   <script type="text/javascript">
     window.addEventListener('keydown', function(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      if(!audio) {
+        return
+      }
+     audio.play();
     })
 
-    console.log(audio);
+    
 //src="sounds/kick.wav"
   </script>
 </html>
