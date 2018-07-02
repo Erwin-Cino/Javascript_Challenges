@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Drum Kit</title>
+
+  </head>
+  <body>
+    <div>
+ 
+    </div>
+
+    <audio data-key="65"></audio>
+
+  </body>
+
+  <script type="text/javascript">
+    window.addEventListener('keydown', function(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    })
+
+    console.log(audio);
+//src="sounds/kick.wav"
+  </script>
+</html>
