@@ -6,15 +6,20 @@
 
   </head>
   <body>
-    <div>
- 
+    <div class="keys">
+        <div class="key">
+          <kBd>A</kBd>
+        </div>
     </div>
 
     <audio data-key="65" src="sounds/kick.wav"></audio> <!-- a -->
     <audio data-key="83" src="sounds/boom.wav"></audio> <!-- s -->
     <audio data-key="68" src="sounds/clap.wav"></audio> <!-- d -->
     <audio data-key="70" src="sounds/openhat.wav"></audio> <!-- f -->
-    <audio data-key=""
+    <audio data-key="74" src="sounds/snare.wav"></audio> <!-- j -->
+    <audio data-key="75" src="sounds/ride.wav"></audio> <!-- k -->
+    <audio data-key="76" src="sounds/tink.wav"></audio> <!-- l -->
+    <audio data-key="186" src="sounds/tom.wav"></audio> <!-- ; -->
 
   </body>
 
@@ -26,6 +31,7 @@
       }
      audio.currentTime = 0; //Rewind to the start
      audio.play();
+     console.log(audio);
     })
 
     
