@@ -3,12 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <title>Drum Kit</title>
-
+    <link rel="stylesheet" type="text/css" href="jamstyle.css">
   </head>
   <body>
     <div class="keys">
-        <div class="key">
+        <div data-key="65" class="key">
           <kBd>A</kBd>
+        </div>
+        <div data-key="83" class="key">
+          <kBd>S</kBd>
+        </div>
+        <div data-key="68" class="key">
+          <kBd>D</kBd>
+        </div>
+        <div data-key="70" class="key">
+          <kBd>F</kBd>
+        </div>
+        <div data-key="74" class="key">
+          <kBd>J</kBd>
+        </div>
+        <div data-key="75" class="key">
+          <kBd>K</kBd>
+        </div>
+        <div data-key="76" class="key">
+          <kBd>L</kBd>
+        </div>
+        <div data-key="186" class="key">
+          <kBd>;</kBd>
         </div>
     </div>
 
@@ -24,16 +45,30 @@
   </body>
 
   <script type="text/javascript">
-    window.addEventListener('keydown', function(e) {
+
+    function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      const key = document.querySelector(`div[data-key="${e.keyCode}"]`)
       if(!audio) {
         return // stop the function from running
       }
      audio.currentTime = 0; //Rewind to the start
      audio.play();
-     console.log(audio);
-    })
+     key.classList.add('playing');  
+     
+    }
 
+
+
+   function removeTrans(e) {
+    if(this.propertyName !== "transform") {
+      this.classList.remove("playing");
+    }      
+  }
+    
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTrans));
+    window.addEventListener('keydown', playSound);
     
 //src="sounds/kick.wav"
   </script>
