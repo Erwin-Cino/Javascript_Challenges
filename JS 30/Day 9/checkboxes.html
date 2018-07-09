@@ -92,17 +92,30 @@
   
   let isShifting = false;
   let listall = document.querySelector('.inbox');
-  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-function isKeyPressed(event) {
-    if (event.shiftKey) {
-        console.log('shiftkey is down');
-    } else {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-    }
+  let lastChecked;
+function isKeyPressed(event) {
+   console.log(event);
+   let inBetween = false;
+   if(event.shiftKey && this.checked) {
+   	checkboxes.forEach(checkbox => {
+   		console.log(checkbox);
+   		if (checkbox === this || checkbox === lastChecked) {
+   			inBetween = !inBetween;
+   			console.log('stating and end');
+   		}
+   		if(inBetween) {
+   			checkbox.checked = true;
+   		}
+   	})
+   }
+   lastChecked = this;
 }
 
-document.addEventListener('keydown',isKeyPressed);
-  
+
+checkboxes.forEach(input => input.addEventListener('click',isKeyPressed));
+
 
 
 
