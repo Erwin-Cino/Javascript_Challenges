@@ -88,37 +88,29 @@
 
 <script type="text/JavaScript">
 
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+let lastChecked;
+let inBetween = false;
+function ifShift(e) {
+	console.log(e);
+	if(e.shiftKey && this.checked) {
+		checkboxes.forEach(checkbox => {
+			if (checkbox === this || checkbox === lastChecked) {
+				inBetween = !inBetween;
+			} 
 
-  
-  let isShifting = false;
-  let listall = document.querySelector('.inbox');
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+			if(inBetween) {
+				checkbox.checked = true;
+			}
+		}); 
+	}
 
-  let lastChecked;
-function isKeyPressed(event) {
-   console.log(event);
-   let inBetween = false;
-   if(event.shiftKey && this.checked) {
-   	checkboxes.forEach(checkbox => {
-   		console.log(checkbox);
-   		if (checkbox === this || checkbox === lastChecked) {
-   			inBetween = !inBetween;
-   			console.log('stating and end');
-   		}
-   		if(inBetween) {
-   			checkbox.checked = true;
-   		}
-   	})
-   }
-   lastChecked = this;
+	lastChecked = this;
 }
 
 
-checkboxes.forEach(input => input.addEventListener('click',isKeyPressed));
-
-
-
-
+checkboxes.forEach(checkbox => checkbox.addEventListener('click',ifShift));
+ 
 
 
 </script>
