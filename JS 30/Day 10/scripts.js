@@ -15,7 +15,7 @@ function toggleVideo() {
 
 	// const medthod = video.paused ? 'play' : 'pause';
 	//video[method]();
-
+	console.log(toggle);
 	if (video.paused) {
 		video.play();
 	} else {
@@ -40,6 +40,6 @@ toggle.addEventListener('click', toggleVideo);
 video.addEventListener('click', toggleVideo);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
-skipButtons.forEach(button =>button.addEventListener('click', skip));
+skipButtons.forEach(button => button.addEventListener('click', skip));
 
 
