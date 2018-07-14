@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+
+const pressed = [];
+const clearWindow = [];
+const potato = 'potato';
+const clear = 'clear';
+
+window.addEventListener('keyup' , (e) => {
+	console.log(e.key);
+	pressed.push(e.key);
+	clearWindow.push(e.key);
+	pressed.splice(-potato.length -1, pressed.length - potato.length);
+	clearWindow.splice(-clear.length -1, clearWindow.length - clear.length);
+
+	if (pressed.join('').includes(potato)) {
+		cornify_add();
+	} else if (clearWindow.join('').includes(clear)) {
+		location.reload();
+	}
+
+
+});
+
+
+</script>
+</body>
+</html>
