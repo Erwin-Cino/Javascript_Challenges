@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Key Detection</title>
   <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+  <script type="text/javascript" src="node_modules/cornified/dist/index.js"></script>
 </head>
 <body>
 <script>
@@ -13,21 +14,25 @@ const clearWindow = [];
 const potato = 'potato';
 const clear = 'clear';
 
-window.addEventListener('keyup' , (e) => {
-	console.log(e.key);
+
+window.addEventListener('keyup' , matchPressed);
+
+
+function matchPressed(e) {
+	
 	pressed.push(e.key);
 	clearWindow.push(e.key);
 	pressed.splice(-potato.length -1, pressed.length - potato.length);
 	clearWindow.splice(-clear.length -1, clearWindow.length - clear.length);
-
 	if (pressed.join('').includes(potato)) {
 		cornify_add();
+
 	} else if (clearWindow.join('').includes(clear)) {
-		location.reload();
+		cornify_clear();
 	}
 
+}
 
-});
 
 
 </script>
